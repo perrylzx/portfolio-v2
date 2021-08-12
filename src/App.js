@@ -1,10 +1,16 @@
 import Navbar from './components/Navbar';
-import 'antd/dist/antd.css';
+import AboutSection from './components/AboutSection';
+import ContactSection from './components/ContactSection';
+import ProjectsSection from './components/ProjectsSection';
+import './App.less';
 
 function App() {
   return (
     <div>
       <Navbar />
+      <AboutSection />
+      <ProjectsSection />
+      <ContactSection />
     </div>
   );
 }
