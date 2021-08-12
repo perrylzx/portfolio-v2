@@ -11,7 +11,9 @@ const ProjectsSectionContainer = styled.div`
 `;
 
 const ProjectsSection = () => {
-  return <ProjectsSectionContainer></ProjectsSectionContainer>;
+  return (
+    <ProjectsSectionContainer id='projects-section'></ProjectsSectionContainer>
+  );
 };
 
 export default ProjectsSection;

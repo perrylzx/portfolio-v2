@@ -12,9 +12,15 @@ const Navbar = () => {
   return (
     <Affix>
       <Menu mode='horizontal'>
-        <Menu.Item>Perry</Menu.Item>
-        <Menu.Item>Projects</Menu.Item>
-        <Menu.Item>Contact</Menu.Item>
+        <Menu.Item>
+          <a href='#about-section'>Perry</a>
+        </Menu.Item>
+        <Menu.Item>
+          <a href='#projects-section'>Projects</a>
+        </Menu.Item>
+        <Menu.Item>
+          <a href='#contact-section'>Contact</a>
+        </Menu.Item>
       </Menu>
     </Affix>
   );
