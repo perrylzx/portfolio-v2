@@ -1,5 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import Project from './Project';
+import { Button } from 'antd';
+import { LeftOutlined, RightOutlined } from '@ant-design/icons';
+
+import { projectData } from '../constants';
 
 const ProjectsSectionContainer = styled.div`
   display: flex;
@@ -7,6 +12,7 @@ const ProjectsSectionContainer = styled.div`
   padding-top: 46px;
   height: 100vh;
   width: 100%;
+  justify-content: space-between;
 `;
 
 const LeftButton = styled(Button).attrs({

@@ -10,7 +10,6 @@ const Project = ({ projectData }) => {
         <h1>{projectData.title}</h1>
         <h2>{projectData.description}</h2>
       </div>
-      {projectData?.component}
     </ProjectContainer>
   );
 };
