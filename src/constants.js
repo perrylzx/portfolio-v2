@@ -2,43 +2,43 @@ export const projectData = {
   isItOpen: {
     title: 'Is it open?',
     description: 'Look up restaurant open timings',
-    bannerUrl: '',
+    bannerUrl: ''
   },
   covidVisualizer: {
     title: 'Covid-Visualizer',
     description: 'See the daily growth of Covid-19 from any country.',
-    bannerUrl: '',
+    bannerUrl: ''
   },
   pitchBooker: {
     title: 'pitch-booker',
     description: 'A pitch booker app.',
-    bannerUrl: '',
+    bannerUrl: ''
   },
   instagram: {
     title: 'Instagram',
     description: 'An image sharing app.',
-    bannerUrl: '',
+    bannerUrl: ''
   },
   terygram: {
     title: 'Terygram',
     description: 'A chat messaging app made with Flutter and Cloud Firestore.',
-    bannerUrl: '',
+    bannerUrl: ''
   },
   todolist: {
     title: 'Todolist',
     description: 'A todolist made in react and redux.',
-    bannerUrl: '',
+    bannerUrl: ''
   },
   cloneOfGoogleSearch: {
     title: 'Clone of Google Search',
     description: 'A clone of the google search page for my first project.',
-    bannerUrl: '',
-  },
+    bannerUrl: ''
+  }
 };
 
 export const SectionIds = {
   ABOUT: 'about-section',
   PROJECT: 'projects-section',
   CONTACT: 'contact-section',
-  SEARCHBAR: 'search-bar-section',
+  SEARCHBAR: 'search-bar-section'
 };
