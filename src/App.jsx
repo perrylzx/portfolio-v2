@@ -1,4 +1,6 @@
+import useScrollSnap from 'react-use-scroll-snap';
 import styled from 'styled-components';
+import { useRef } from 'react';
 import Navbar from './components/Navbar';
 import AboutSection from './components/AboutSection';
 import ContactSection from './components/ContactSection';
@@ -14,11 +16,14 @@ const AppContainer = styled.div`
 `;
 
 function App() {
+  const scrollRef = useRef(null);
+  useScrollSnap({ ref: scrollRef, duration: 100, delay: 10 });
+
   return (
     <>
       <Navbar />
-      <AppContainer>
-        <SearchBar id="search-bar-section" />
+      <AppContainer ref={scrollRef}>
+        <SearchBar id={SectionIds.MAIN} />
         <AboutSection id={SectionIds.ABOUT} />
         <ProjectsSection id={SectionIds.PROJECT} />
         <ContactSection id={SectionIds.CONTACT} />
