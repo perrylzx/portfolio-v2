@@ -1,67 +1,72 @@
-/* eslint-disable react/jsx-props-no-spreading */
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
+import { map } from 'lodash';
 import { Button } from 'antd';
-import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import Project from './Project';
 
 import { projectData } from '../constants';
 
 const ProjectsSectionContainer = styled.div`
-  display: flex;
+  position: relative;
   align-items: center;
   padding-top: 46px;
   height: 100vh;
   width: 100%;
-  justify-content: space-between;
 `;
 
-const LeftButton = styled(Button).attrs({
-  type: 'primary',
-  shape: 'circle',
-  icon: <LeftOutlined />
-})``;
+const ScrollableProjects = styled.div`
+  display: -webkit-box;
+  flex-direction: row;
+  scroll-behavior: smooth;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  height: 100%;
+  &::-webkit-scrollbar {
+    height: 0;
+  }
+`;
 
-const RightButton = styled(Button).attrs({
-  type: 'primary',
-  shape: 'circle',
-  icon: <RightOutlined />
-})``;
+const ScrollButtonContainer = styled.div`
+  position: absolute;
+  bottom: 52px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+  & > :not(a:last-child) {
+    margin-right: 2px;
+  }
+`;
 
 function ProjectsSection(props) {
-  const [currentlySelectedProjectNumber, setCurrentlySelectedProjectNumber] = useState(0);
-  const [currentlySelectedProject, setCurrentlySelectedProject] = useState(
-    projectData[Object.keys(projectData)[currentlySelectedProjectNumber]]
-  );
-
-  useEffect(() => {
-    setCurrentlySelectedProject(
-      projectData[Object.keys(projectData)[currentlySelectedProjectNumber]]
-    );
-  }, [currentlySelectedProjectNumber]);
-
-  const projectsLeftOutOfBounds = currentlySelectedProjectNumber !== 0;
-
-  const projectsRightOutOfBounds =
-    currentlySelectedProjectNumber < Object.keys(projectData).length - 1;
+  const handleScrollToElement = (key) => {
+    const scrollableProjects = document.querySelector('#scrollableProjectContainer');
+    const project = document.querySelector(`#${key}`);
+    const leftPosition = project.offsetLeft;
+    scrollableProjects.scrollLeft = leftPosition;
+  };
 
   return (
     <ProjectsSectionContainer {...props}>
-      <LeftButton
-        onClick={() => {
-          if (projectsLeftOutOfBounds) {
-            setCurrentlySelectedProjectNumber(currentlySelectedProjectNumber - 1);
-          }
-        }}
-      />
-      <Project projectData={currentlySelectedProject} />
-      <RightButton
-        onClick={() => {
-          if (projectsRightOutOfBounds) {
-            setCurrentlySelectedProjectNumber(currentlySelectedProjectNumber + 1);
-          }
-        }}
-      />
+      <ScrollableProjects id="scrollableProjectContainer">
+        {map(projectData, (project, key) => (
+          <Project projectKey={key} projectData={project} />
+        ))}
+      </ScrollableProjects>
+      <ScrollButtonContainer>
+        {map(Object.keys(projectData), (key, index) => (
+          <Button
+            type="circle"
+            onClick={(event) => {
+              event.preventDefault();
+              handleScrollToElement(key);
+            }}
+            href={`#${key}`}>
+            {index}
+          </Button>
+        ))}
+      </ScrollButtonContainer>
     </ProjectsSectionContainer>
   );
 }
